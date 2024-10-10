@@ -18,8 +18,8 @@ This readme is inspired by this [workshop](https://www.youtube.com/watch?v=ofPHJ
 
 ## Pytest pytest.ini file settings:
 ### addopts: (stands for add options)
-[docs link](https://docs.pytest.org/en/stable/reference/reference.html#confval-addopts)</br>
-This settings can hold any number of the previous flags, and it will apply it automatically when testing.
+This settings can hold any number of the previous flags, and it will apply it automatically when testing.</br>
+[docs link](https://docs.pytest.org/en/stable/reference/reference.html#confval-addopts)
 
 #### example:
 in you pytest.ini file if addopts like this:</br>
