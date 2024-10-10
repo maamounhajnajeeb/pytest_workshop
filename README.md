@@ -5,9 +5,9 @@ This readme is inspired by this [workshop](https://www.youtube.com/watch?v=ofPHJ
     explanation: increase pytest's verbosity, [docs link](https://docs.pytest.org/en/8.3.x/how-to/output.html#verbosity)
 - -x: exist instantly on the first failure
 - --collect-only: only show which tests were collected
-- --lf/--ff:
-    1] --lf, --last-failed - to only re-run the failures.
-    2] --ff, --failed-first - to run the failures first and then the rest of the tests.
+- --lf/--ff:</br>
+    1] --lf, --last-failed - to only re-run the failures.</br>
+    2] --ff, --failed-first - to run the failures first and then the rest of the tests.</br>
     [docs link](https://docs.pytest.org/en/stable/how-to/cache.html#how-to-re-run-failed-tests-and-maintain-state-between-test-runs)
 - --tb: Control traceback generation
     this flag accepts one positional argument: \[long, short, line, and more...\]
@@ -18,7 +18,7 @@ This readme is inspired by this [workshop](https://www.youtube.com/watch?v=ofPHJ
 
 ## Pytest pytest.ini file settings:
 ### addopts: (stands for add options)
-This settings can hold any number of the previous flags, and it will apply it automatically when testing.</br>
+This settings can hold any number of the previous flags, and it will apply it automatically when testing(kind of presistent options throught the tests).</br>
 [docs link](https://docs.pytest.org/en/stable/reference/reference.html#confval-addopts)
 
 #### example:
