@@ -1,0 +1,6 @@
+# hooks/yaml_plugin/testsound.yml
+- name: test1
+  type: check-compression
+  codec: mp3
+  inputfile: data1.wav
+  compression: 10%

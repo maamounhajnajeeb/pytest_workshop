@@ -20,7 +20,6 @@ This readme is inspired by this [workshop](https://www.youtube.com/watch?v=ofPHJ
 ### addopts: (stands for add options)
 This settings can hold any number of the previous flags, and it will apply it automatically when testing(kind of presistent options throught the tests).</br>
 [docs link](https://docs.pytest.org/en/stable/reference/reference.html#confval-addopts)
-
 #### example:
 in you pytest.ini file if addopts like this:</br>
 addopts = -v</br>
@@ -32,7 +31,7 @@ you are doing this: pytest path/to/test/unit -v
 full details on: [docs link](https://docs.pytest.org/en/stable/how-to/assert.html#matching-exception-messages)</br>
 note: read more about match attribute within the context manager.
 
-small example
+small example:
 ```python
 def divide(x, y):
     return x / y

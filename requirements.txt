@@ -1,0 +1,14 @@
+cookiecutter
+devpi-client
+flake8
+hypothesis
+Pygments
+pytest
+pytest-cov
+pytest-instafail
+pytest-mock
+pytest-xdist
+PyYAML
+Sphinx
+tox
+ipytest
