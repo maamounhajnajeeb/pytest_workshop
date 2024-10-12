@@ -22,6 +22,9 @@ This readme is inspired by this [workshop](https://www.youtube.com/watch?v=ofPHJ
 - --setup-show: Show fixtures as they are set up, used and torn down
 - --setup-only: Only setup fixtures, do not execute tests
 - --setup-plan: Show what fixtures/tests would be executed, but don't run anything
+- --duration=n: will show the most n things that consume time within your test-suite.
+    example: pytest path/to/your/tests/ --duration=5</br>
+    explain: it will show the five most things that consume time in path/to/your/tests/ test-suite
 
 #### Good practice: write a docsting for your fixtures 
 
@@ -243,10 +246,75 @@ def answers():
 def test_one(answers)
     assert answers == [42]
 
-def test_one(answers)
+def test_two(answers)
     assert answers == [42]
 ```
 If we stay on function scope, the fixture will be called once for each test function.</br>
 But, if make it module scope, the fixture result will be cached for each module which will save processing time.</br>
 ![fixtures-caching](images/test_webinar_08.png)</br>
-However, this can be some kind of dangerous
+However, this can be some kind of dangerous because when editing any fixture shared between module it will be edited throught the module.</br>
+Example:
+```py
+@pytest.fixture(scope="module")
+def answers():
+    return [42]
+
+def test_one(answers)
+    answers.append(44)
+    assert answers == [42, 44]
+
+def test_two(answers)
+    assert answers == [42]
+```
+Explain: in the previous case, the second test will fail because answers (which is cached) now are [42, 44] not just [42].</br>
+So, be careful</br>
+`originaly` there are five fixture scopes supported by pytest:
+1. "function" (default)
+2. "class" (means: every class will get it's own value, but tests inside the class will share it)
+3. "module" (means: the value will be shared in the same file)
+4. "package" (means: revise documentation)
+5. "session" (means: share the value for entire test session for all tests)
+
+### Yielding fixtures:
+Why to yield fixtures?</br>
+
+Using yield in fixtures doesn't directly enhance performance in terms of execution speed. Instead, it focuses on managing resource usage more efficiently. Here's how:
+
+1. Efficient Resource Management: By using yield to handle setup and teardown in a fixture, you ensure resources are allocated only for the duration of the test and then properly released afterward. This can indirectly improve performance by avoiding resource leaks, which could slow down the system or cause issues when tests are run repeatedly.
+
+2. Lazy Resource Initialization: yield allows for lazy initialization, meaning the resource setup happens only when the test is run. This can prevent unnecessary resource allocation if a fixture is defined but not used in some tests.
+
+3. Isolated Teardown: Having teardown code run immediately after a test (using yield) ensures that resources are cleaned up as soon as they're no longer needed. This helps keep memory and other resources free, especially in large test suites where many fixtures are used.</br>
+
+Example:
+```py
+class Client:
+    def connect(self):
+        print("connected")
+    def diconnect(self):
+        print("disconnected")
+
+@pytest.fixture
+def connected_client():
+    client = Client()
+    client.connect()
+    yield client
+    client.diconnect()
+
+def test_client(connected_client):
+    print("in the test")
+    assert False
+```
+Then run test with --setup-show flag to see fixture built and teardown process.
+![cleanup with yield](images/test_webinar_09.png)
+
+### Share fixtures between different test files
+Let's put some rule:
+1. Fixtures defined as methods of a test class are available only to test methods on that class
+2. Fixtures defined in a test moudle are available only to tests in that module
+3. Fixtures defined in a conftest.py file are available to tests in the directory and subdirectory.</br>
+
+`Note`: Fixtures don't get imported, pytest autodiscovers them!
+
+### Autouse fixtures:
+![autouse fixtures](images/test_webinar_10.png)
