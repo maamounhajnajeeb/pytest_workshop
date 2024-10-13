@@ -5,8 +5,9 @@ This readme is inspired by this [workshop](https://www.youtube.com/watch?v=ofPHJ
 
 ## Pytest command helper flags:
 #### general helper command flags:
+![general helper command flags](images/test_webinar_02.png)
 - -v: stands for verbose output
-    explanation: increase pytest's verbosity, [docs link](https://docs.pytest.org/en/8.3.x/how-to/output.html#verbosity)
+    explanation: increase pytest's verbosity, [docs link](https://docs.pytest.org/en/stable/how-to/output.html#verbosity)
 - -x: exit instantly on the first failure
 - --collect-only: only show which tests were collected
 - --lf/--ff:</br>
@@ -15,9 +16,9 @@ This readme is inspired by this [workshop](https://www.youtube.com/watch?v=ofPHJ
     [docs link](https://docs.pytest.org/en/stable/how-to/cache.html#how-to-re-run-failed-tests-and-maintain-state-between-test-runs)
 - --tb: Control traceback generation
     this flag accepts one positional argument: \[long, short, line, and more...\]
-    see argument option and more on [this link](https://docs.pytest.org/en/8.3.x/how-to/output.html#modifying-python-traceback-printing)
+    see argument option and more on [this link](https://docs.pytest.org/en/stable/how-to/output.html#modifying-python-traceback-printing)
 - -l: show local variables in tracebacks
-- -s: disable stdout capturing, [docs link](https://docs.pytest.org/en/8.3.x/how-to/output.html#modifying-python-traceback-printing)
+- -s: disable stdout capturing, [docs link](https://docs.pytest.org/en/stable/how-to/output.html#modifying-python-traceback-printing)
 - -m: run test with specified mark only</br>
     example:
     ```shell
@@ -177,6 +178,8 @@ apps\Authentication\tests\apis\test_sign_up.py s                                
 ```
 
 #### Using fixtures from fixtures:
+![classical dependency injection](images/test_webinar_04.png)
+![pytest fixture injection](images/test_webinar_05.png)
 example (learn by do):
 ```python
 @pytest.fixture
