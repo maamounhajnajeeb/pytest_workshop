@@ -1,10 +1,13 @@
 This readme is inspired by this [workshop](https://www.youtube.com/watch?v=ofPHJrAOaTE&t=2027s)
 
+## Types of automated tests
+![types of automated tests](images/test_webinar_01.png)
+
 ## Pytest command helper flags:
 #### general helper command flags:
 - -v: stands for verbose output
     explanation: increase pytest's verbosity, [docs link](https://docs.pytest.org/en/8.3.x/how-to/output.html#verbosity)
-- -x: exist instantly on the first failure
+- -x: exit instantly on the first failure
 - --collect-only: only show which tests were collected
 - --lf/--ff:</br>
     1] --lf, --last-failed - to only re-run the failures.</br>
@@ -15,6 +18,12 @@ This readme is inspired by this [workshop](https://www.youtube.com/watch?v=ofPHJ
     see argument option and more on [this link](https://docs.pytest.org/en/8.3.x/how-to/output.html#modifying-python-traceback-printing)
 - -l: show local variables in tracebacks
 - -s: disable stdout capturing, [docs link](https://docs.pytest.org/en/8.3.x/how-to/output.html#modifying-python-traceback-printing)
+- -m: run test with specified mark only</br>
+    example:
+    ```shell
+    pytest path/to/your/tests/ -m"webtest"
+    ```
+    more about -m flag in custom markers section
 
 ### commands helper flags related with fixtures:
 - --fixtures: Show all defined fixutres with their docstrings
@@ -22,7 +31,7 @@ This readme is inspired by this [workshop](https://www.youtube.com/watch?v=ofPHJ
 - --setup-show: Show fixtures as they are set up, used and torn down
 - --setup-only: Only setup fixtures, do not execute tests
 - --setup-plan: Show what fixtures/tests would be executed, but don't run anything
-- --duration=n: will show the most n things that consume time within your test-suite.
+- --durations=n: will show the most n things that consume time within your test-suite.
     example: pytest path/to/your/tests/ --duration=5</br>
     explain: it will show the five most things that consume time in path/to/your/tests/ test-suite
 
@@ -127,6 +136,7 @@ def test_function(): ...
 
 ## Parametrizing Tests
 Parametrizing is type of markers
+![pytest parametrizing](images/test_webinar_03.png)
 
 ## Fixtures
 
