@@ -4,7 +4,7 @@ This readme is inspired by this [workshop](https://www.youtube.com/watch?v=ofPHJ
 ![types of automated tests](images/test_webinar_01.png)
 
 ## Pytest command helper flags:
-#### general helper command flags:
+### general helper command flags:
 ![general helper command flags](images/test_webinar_02.png)
 - -v: stands for verbose output
     explanation: increase pytest's verbosity, [docs link](https://docs.pytest.org/en/stable/how-to/output.html#verbosity)
@@ -36,8 +36,17 @@ This readme is inspired by this [workshop](https://www.youtube.com/watch?v=ofPHJ
     example: pytest path/to/your/tests/ --duration=5</br>
     explain: it will show the five most things that consume time in path/to/your/tests/ test-suite
 
-#### Good practice: write a docsting for your fixtures 
-
+#### Good practice: write a docsting for your fixtures
+example:
+```py
+@pytest.fixture(scope="session")
+def faked_phone_number() -> Generator[str, Any, None]:
+    """
+    generate random number like this: +9639XXXXXXXX
+    Xs are between (3, 6)
+    """
+    yield "+9639" + ''.join(str(random.randint(3, 6)) for i in range(8))
+```
 
 ## Pytest pytest.ini file settings:
 ### addopts: (stands for add options)
