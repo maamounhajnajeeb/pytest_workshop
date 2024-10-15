@@ -18,6 +18,9 @@ This readme is inspired by this [workshop](https://www.youtube.com/watch?v=ofPHJ
     this flag accepts one positional argument: \[long, short, line, and more...\]
     see argument option and more on [this link](https://docs.pytest.org/en/stable/how-to/output.html#modifying-python-traceback-printing)
 - -l: show local variables in tracebacks
+- -r: -can be used to display a “short test summary info” at the end of the test session, making it easy in large test suites to get a clear picture of all failures, skips, xfails, etc</br>
+more about -r options on: [docs link](https://docs.pytest.org/en/stable/how-to/output.html#producing-a-detailed-summary-report)</br>
+note: -rP is the more extensive detailed option
 - -s: disable stdout capturing, [docs link](https://docs.pytest.org/en/stable/how-to/output.html#modifying-python-traceback-printing)
 - -m: run test with specified mark only</br>
     example:
